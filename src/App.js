@@ -135,10 +135,10 @@ function App() {
 
 
   return (
-    <Flex w={"100vw"} flexDirection={"column"} alignItems={"center"} bgColor={"gray.100"}>
+    <Flex w={"100vw"} flexDirection={"column"} alignItems={"center"} bgColor={"gray.100"} overflowX={"hidden"}>
 
-      <Flex w={"100vw"} h={"10vh"} bgColor={"white"} justifyContent={"center"} as={'header'} position={"sticky"} top={0} zIndex={1000} borderBottom={"1px solid"} borderColor={"black"}>
-        <Center w={"60vw"} h={"10vh"} justifyContent={"space-between"}>
+      <Flex w={"100%"} h={"10vh"} bgColor={"white"} justifyContent={"center"} as={'header'} position={"sticky"} top={0} zIndex={1000} borderBottom={"1px solid"} borderColor={"black"}>
+        <Center w={"60%"} h={"10vh"} justifyContent={"space-between"}>
             <Box>
               <Text fontSize={"2xl"} fontWeight={700}>Ahad Bashir</Text>
             </Box>
@@ -165,7 +165,7 @@ function App() {
 
       <Divider w={"60%"} m={"1%"} borderColor={"gray.100"}/>
 
-      <Flex w={"100vw"} justifyContent={"center"} id='experience'>
+      <Flex w={"100%"} justifyContent={"center"} id='experience'>
         <Flex w={"60%"} flexDirection={"column"}>
           <Heading as='h2' size={'lg'} marginBottom={"2%"}>
             Experience
@@ -191,7 +191,7 @@ function App() {
 
       <Divider w={"60%"} m={"2%"} borderColor={"black"}/>
 
-      <Flex w={"100vw"} justifyContent={"center"} id='projects'>
+      <Flex w={"100%"} justifyContent={"center"} id='projects'>
         <Flex w={"60%"} flexDirection={"column"}>
           <Heading as='h2' size={'lg'} marginBottom={"2%"}>
             Personal Projects
@@ -215,26 +215,27 @@ function App() {
       
 
       <Flex 
-        w={"100vw"} 
+        w={"100%"} 
         justifyContent={"center"} 
         id='contact'
         bgColor={"white"}
         borderTop={"1px solid"}
         borderColor={"black"}
+        marginTop={"2%"}
         paddingTop={"1%"}
         paddingBottom={"1%"}
-        
       >
         <Flex 
-          w={"60vw"} 
+          w={"60%"} 
           flexDirection={"column"} 
           alignItems={"center"}
+          justifyContent={"center"}
         >
           <Heading as='h2' size={'lg'} marginBottom={"2%"}>
             Contact
           </Heading>
 
-            <Text fontSize={"2xl"}>
+            <Text fontSize={"2xl"} w={"100%"} textAlign={"center"}>
               <Link >Email</Link> | <Link>LinkedIn</Link> | <Link>Github</Link>
             </Text>
             
