@@ -14,15 +14,15 @@ import React from "react";
 function ProjectCard({projectTitle, projectURL, technologiesUsed, projectDescription, projectImage}) {
     return (
         <Flex
-        w={"60vw"}
-        h={"30vh"}
+        w={["90vw", 0, 0, "60vw"]}
+        h={["30vh", null, null, "30vh"]}
         boxShadow="2xl"
         borderRadius="xl"
         bgColor={"white"}
         marginBottom={"1%"}
         >
             <Center w={"30%"} h={"100%"}> {/* Image box */}
-                <AspectRatio w={"65%"} ratio={16 / 10}>
+                <AspectRatio w={["90%", 0, 0, "65%"]} ratio={16 / 10}>
                     <Image   objectFit={"fill"} src={projectImage} alt={`Image of ${projectTitle}`} borderRadius={"5%"} boxShadow={"xl"}/>
                 </AspectRatio>
                     
@@ -32,14 +32,14 @@ function ProjectCard({projectTitle, projectURL, technologiesUsed, projectDescrip
         
             <Flex flexDir={"column"} padding={"2%"} w={"67%"} objectFit={"contain"}> {/* Text box */}
                 <Link href={projectURL} isExternal>
-                    <Heading as='h3' size={'md'}>
+                    <Heading as='h3' size={['sm', null, null, 'md']}>
                         {projectTitle}→
                     </Heading>
                 </Link>
-                <Text fontSize={"sm"} marginBottom={"3%"} fontWeight={300}>
+                <Text fontSize={["xs", null, null, "sm"]} marginBottom={["6%", null, null, "3%"]} fontWeight={300}>
                     {technologiesUsed}
                 </Text>
-                <Text noOfLines={4} fontWeight={300}>
+                <Text noOfLines={[7, null, null, 4]} fontWeight={300} fontSize={["sm", null, null, "md"]}>
                     {projectDescription}
                 </Text>
                 

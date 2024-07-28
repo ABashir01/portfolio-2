@@ -15,15 +15,15 @@ import React from "react";
 function ExperienceCard({expTitle, expLocation, expLocationUrl, expStartDate, expEndDate, expDescription, expImageFile}) {
     return (
         <Flex
-        w={"60vw"}
-        h={"25vh"}
+        w={["90vw", null, null, "60vw"]}
+        h={["30vh", null, null, "25vh"]}
         boxShadow="2xl"
         borderRadius="xl"
         bgColor={"white"}
         marginBottom={"1%"}
         >
             <Center w={"30%"} h={"100%"}> {/* Image box */}
-                    <AspectRatio w={"40%"} ratio={1 / 1}>
+                    <AspectRatio w={["80%", null, null, "40%"]} ratio={1 / 1}>
                         <Image objectFit={"fill"} src={expImageFile} alt={`Image of ${expLocation} logo`}/>
                     </AspectRatio>
                     
@@ -33,14 +33,14 @@ function ExperienceCard({expTitle, expLocation, expLocationUrl, expStartDate, ex
         
             <Flex flexDir={"column"} padding={"2%"} w={"67%"}> {/* Text box */}
                 <Link href={expLocationUrl} isExternal>
-                    <Heading as='h3' size={'md'}>
+                    <Heading as='h3' size={['sm', null, null, 'md']}>
                         {expTitle} • {expLocation}→
                     </Heading>
                 </Link>
-                <Text fontSize={"sm"} marginBottom={"3%"} fontWeight={300}>
+                <Text fontSize={["xs", null, null, "sm"]} marginBottom={["6%", null, null, "3%"]} fontWeight={300}>
                     {expStartDate} - {expEndDate}
                 </Text>
-                <Text noOfLines={3} fontWeight={300}>
+                <Text noOfLines={[7, null, null, 3]} fontWeight={300} fontSize={["sm", null, null, "md"]}>
                     {expDescription}
                 </Text>
                 

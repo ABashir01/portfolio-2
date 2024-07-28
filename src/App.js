@@ -9,7 +9,17 @@ import {
   Link,
   Center,
   HStack,
+  IconButton,
+  Icon,
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  DrawerHeader,
+  DrawerBody,
+  useDisclosure,
 } from '@chakra-ui/react';
+import { HamburgerIcon } from '@chakra-ui/icons';
 import { color } from 'framer-motion';
 import React from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
@@ -19,6 +29,8 @@ import ProjectCard from './components/projectCard';
 
 
 function App() {
+  
+  const {isOpen, onOpen, onClose} = useDisclosure();
 
   const experienceList = [
     {
@@ -135,39 +147,60 @@ function App() {
 
 
   return (
-    <Flex w={"100vw"} flexDirection={"column"} alignItems={"center"} bgColor={"gray.100"} overflowX={"hidden"}>
+    <Flex maxWidth={"100vw"} flexDirection={"column"} alignItems={"center"} bgColor={"gray.100"} overflow={"clip"}>
 
       <Flex w={"100%"} h={"10vh"} bgColor={"white"} justifyContent={"center"} as={'header'} position={"sticky"} top={0} zIndex={1000} borderBottom={"1px solid"} borderColor={"black"}>
-        <Center w={"60%"} h={"10vh"} justifyContent={"space-between"}>
+        <Center w={["90%", 0, 0, "60%"]} h={"10vh"} justifyContent={"space-between"}>
             <Box>
-              <Text fontSize={"2xl"} fontWeight={700}>Ahad Bashir</Text>
+              <Text fontSize={["lg", 0, 0, "2xl"]} fontWeight={700}>Ahad Bashir</Text>
             </Box>
-            <HStack spacing={5}>
-              <AnchorLink href='#about'><Link fontSize={"xl"} fontWeight={300}>About</Link></AnchorLink>
-              <AnchorLink href='#experience'><Link fontSize={"xl"} fontWeight={300}>Experience</Link></AnchorLink>
-              <AnchorLink href='#projects'><Link fontSize={"xl"} fontWeight={300}>Projects</Link></AnchorLink>
-              <AnchorLink href='#contact'><Link fontSize={"xl"} fontWeight={300}>Contact</Link></AnchorLink>
+            <HStack spacing={5} fontSize={["md", 0, 0, "xl"]} display={["none", 0, 0, "flex"]} fontWeight={300}>
+              <AnchorLink href='#about'><Link>About</Link></AnchorLink>
+              <AnchorLink href='#experience'><Link>Experience</Link></AnchorLink>
+              <AnchorLink href='#projects'><Link>Projects</Link></AnchorLink>
+              <AnchorLink href='#contact'><Link>Contact</Link></AnchorLink>
             </HStack>
+            <IconButton 
+              aria-label='Open Menu'
+              icon={<HamburgerIcon />}
+              display={["flex", 0, 0, "none"]}
+              onClick={onOpen}
+            />
         </Center>
       </Flex>
+
+      <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerBody h={"100vw"}>
+            <Flex flexDir={"column"} h={"100vw"} fontWeight={300} fontSize={"3xl"} justifyContent={"space-around"}>
+              <AnchorLink href='#about' onClick={onClose}><Link>About</Link></AnchorLink>
+              <AnchorLink href='#experience' onClick={onClose}><Link>Experience</Link></AnchorLink>
+              <AnchorLink href='#projects' onClick={onClose}><Link>Projects</Link></AnchorLink>
+              <AnchorLink href='#contact' onClick={onClose}><Link>Contact</Link></AnchorLink>
+            </Flex>
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
       
-      <Flex w={"100vw"} h={"40vh"} justifyContent={"center"} bgGradient={'linear(to-br, gray.500, gray.700)'} borderBottom={"1px solid"} borderColor={"black"} id='about'>
-        <Flex w={"60%"} flexDirection={"column"} color={"white"} justifyContent={"center"} fontSize={"lg"}> {/* Intro section */}
-          <Heading as='h1' size={'xl'} marginBottom={"2%"}>
+      <Flex w={"100vw"} h={"50vh"} justifyContent={"center"} bgGradient={'linear(to-br, gray.500, gray.700)'} borderBottom={"1px solid"} borderColor={"black"} id='about'>
+        <Flex w={["90%", 0, 0, "60%"]} flexDirection={"column"} color={"white"} justifyContent={"center"} fontSize={"lg"}> {/* Intro section */}
+          <Heading as='h1' size={["lg", 0, 0, 'xl']} marginBottom={"2%"}>
             Hey, I'm Ahad Bashir
           </Heading>
-          <Text w={"100%"} noOfLines={5} fontWeight={300} >
+          <Text w={"100%"} noOfLines={[7, 0, 0, 5]} fontWeight={300} fontSize={["sm", 0, 0, "lg"]}>
             I'm a Masters in Computer Science student at Brown. I love writing music (I'm really into Japanese Rock bands like <Link fontWeight={700} href='https://open.spotify.com/track/0WaaPFt4Qy8sVfxKz43bCD?si=e0f318236cc34a33' isExternal>Asian Kung-Fu Generation→</Link> and <Link fontWeight={700} href='https://open.spotify.com/track/3iZmntAKfKaL1WLNEOFqb8?si=3b229b81c9214ff9' isExternal>Ling Tosite Sigure→</Link>), playing board games (my favorite right now is <Link fontWeight={700} href='https://boardgamegeek.com/boardgame/291572/oath' isExternal>Oath→</Link>), and learning. I'm particularly interested in the application of my technical skills to further research and love working with people advancing human knowledge. 
           </Text>
         </Flex>
       </Flex>
       
 
-      <Divider w={"60%"} m={"1%"} borderColor={"gray.100"}/>
+      <Divider w={["90%", 0, 0, "60%"]} m={["3%", 0, 0, "1%"]} borderColor={"gray.100"}/>
 
       <Flex w={"100%"} justifyContent={"center"} id='experience'>
-        <Flex w={"60%"} flexDirection={"column"}>
-          <Heading as='h2' size={'lg'} marginBottom={"2%"}>
+        <Flex w={["90%", 0, 0, "60%"]} flexDirection={"column"} alignItems={["center", 0, 0, "stretch"]}>
+          <Heading as='h2' size={'lg'} marginBottom={["4%", 0, 0, "2%"]}>
             Experience
           </Heading>
 
@@ -189,11 +222,11 @@ function App() {
         </Flex>
       </Flex>
 
-      <Divider w={"60%"} m={"2%"} borderColor={"black"}/>
+      <Divider w={["90%", 0, 0, "60%"]} m={["3%", 0, 0, "1%"]} borderColor={"black"}/>
 
       <Flex w={"100%"} justifyContent={"center"} id='projects'>
-        <Flex w={"60%"} flexDirection={"column"}>
-          <Heading as='h2' size={'lg'} marginBottom={"2%"}>
+        <Flex w={["90%", 0, 0, "60%"]} flexDirection={"column"} alignItems={["center", 0, 0, "stretch"]}>
+          <Heading as='h2' size={'lg'} marginBottom={["4%", 0, 0, "2%"]}>
             Personal Projects
           </Heading>
 
@@ -221,22 +254,22 @@ function App() {
         bgColor={"white"}
         borderTop={"1px solid"}
         borderColor={"black"}
-        marginTop={"2%"}
-        paddingTop={"1%"}
-        paddingBottom={"1%"}
+        marginTop={["4%", null, null, "2%"]}
+        paddingTop={["2%", null, null, "1%"]}
+        paddingBottom={["2%", null, null, "1%"]}
       >
         <Flex 
-          w={"60%"} 
+          w={["90%", 0, 0, "60%"]} 
           flexDirection={"column"} 
           alignItems={"center"}
           justifyContent={"center"}
         >
-          <Heading as='h2' size={'lg'} marginBottom={"2%"}>
+          <Heading as='h2' size={'lg'} marginBottom={["4%", null, null, "2%"]}>
             Contact
           </Heading>
 
             <Text fontSize={"2xl"} w={"100%"} textAlign={"center"}>
-              <Link >Email</Link> | <Link>LinkedIn</Link> | <Link>Github</Link>
+              <Link href='mailto:ahad_bashir@brown.edu' isExternal>Email</Link> | <Link href='https://www.linkedin.com/in/ahad-bashir-b5382b1b7/' isExternal>LinkedIn</Link> | <Link href='https://github.com/ABashir01' isExternal>Github</Link>
             </Text>
             
         </Flex>
