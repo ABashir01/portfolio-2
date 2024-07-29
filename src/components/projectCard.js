@@ -29,7 +29,7 @@ function ProjectCard({projectTitle, projectURL, technologiesUsed, projectDescrip
 
             <Divider orientation="vertical" w={"3%"}/>
         
-            <Flex flexDir={"column"} padding={["4%", null, null, "2%"]} w={"67%"} objectFit={"contain"}> {/* Text box */}
+            <Flex flexDir={"column"} padding={["3%", null, null, "2%"]} w={"67%"} objectFit={"contain"}> {/* Text box */}
                 <Link href={projectURL} isExternal>
                     <Heading as='h3' size={['sm', null, null, 'md']}>
                         {projectTitle}→
