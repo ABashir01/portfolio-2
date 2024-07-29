@@ -6,7 +6,6 @@ import {
     Heading,
     Text,
     Divider,
-    Box,
     AspectRatio
 } from "@chakra-ui/react";
 import React from "react";

@@ -10,7 +10,6 @@ import {
   Center,
   HStack,
   IconButton,
-  Icon,
   Drawer,
   DrawerOverlay,
   DrawerContent,
@@ -20,7 +19,6 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
-import { color } from 'framer-motion';
 import React from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 
@@ -172,8 +170,9 @@ function App() {
       <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
         <DrawerOverlay />
         <DrawerContent>
+          <DrawerHeader></DrawerHeader>
           <DrawerCloseButton />
-          <DrawerBody h={"100vw"}>
+          <DrawerBody h={"100vh"}>
             <Flex flexDir={"column"} h={"100vw"} fontWeight={300} fontSize={"3xl"} justifyContent={"space-around"}>
               <AnchorLink href='#about' onClick={onClose}><Link>About</Link></AnchorLink>
               <AnchorLink href='#experience' onClick={onClose}><Link>Experience</Link></AnchorLink>
