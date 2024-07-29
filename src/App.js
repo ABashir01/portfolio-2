@@ -79,7 +79,7 @@ function App() {
     {
       "expTitle": "Web Developer", 
       "expLocation": "Birmingham Islamic Society", 
-      "expLocationUrl": "https://www.uab.edu/it/home/security", 
+      "expLocationUrl": "https://www.bisweb.org/", 
       "expStartDate": "Jun 2023", 
       "expEndDate": "Aug 2023", 
       "expDescription": "Worked on internal website - creating a system for managing bank transactions and resolving application form issues. Used Salesforce Apex and Javascript.", 
