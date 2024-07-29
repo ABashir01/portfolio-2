@@ -30,7 +30,7 @@ function ExperienceCard({expTitle, expLocation, expLocationUrl, expStartDate, ex
 
             <Divider orientation="vertical" w={"3%"}/>
         
-            <Flex flexDir={"column"} padding={"2%"} w={"67%"}> {/* Text box */}
+            <Flex flexDir={"column"} padding={["4%", null, null, "2%"]} w={"67%"}> {/* Text box */}
                 <Link href={expLocationUrl} isExternal>
                     <Heading as='h3' size={['sm', null, null, 'md']}>
                         {expTitle} • {expLocation}→
