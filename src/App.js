@@ -73,7 +73,7 @@ function App() {
       "expLocationUrl": "https://www.uab.edu/it/home/security", 
       "expStartDate": "Jun 2023", 
       "expEndDate": "Aug 2023", 
-      "expDescription": "Worked with Professor Gary Cutter in order to clean up + analyze large datasets for biostatistical research. Used Python and SAS.", 
+      "expDescription": "Created tool to automatically sort and respond to reported spam emails, and, also, sorted hundreds of applications for company. Used Python.", 
       "expImageFile": "experience-images/UAB-Logo-transformed.jpeg"
     },
     {
