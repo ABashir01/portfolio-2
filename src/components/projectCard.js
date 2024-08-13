@@ -21,8 +21,8 @@ function ProjectCard({projectTitle, projectURL, technologiesUsed, projectDescrip
         marginBottom={"1%"}
         >
             <Center w={"30%"} h={"100%"}> {/* Image box */}
-                <AspectRatio w={["90%", 0, 0, "65%"]} ratio={16 / 10}>
-                    <Image   objectFit={"fill"} src={projectImage} alt={`Image of ${projectTitle}`} borderRadius={"5%"} boxShadow={"xl"}/>
+                <AspectRatio w={["90%", 0, 0, "75%"]}  ratio={[10/16, 14/10, 14/10, 18/10]} >
+                    <Image objectFit={"cover"} src={projectImage} alt={`Image of ${projectTitle}`} borderRadius={"5%"} boxShadow={"xl"}/>
                 </AspectRatio>
                     
             </Center> 

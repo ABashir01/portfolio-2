@@ -107,6 +107,13 @@ function App() {
 
   const projectList = [
     {
+      "projectTitle": "Political Bias Checker",
+      "projectURL": "https://github.com/ABashir01/article-bias-checker",
+      "technologiesUsed": "Pytorch (Transformers), React, Python (Flask), Chakra UI",
+      "projectDescription": `A website where you can submit a piece of text that is then passed to an AI model (fine-tuned version of Google's BERT) which determines the political bias of the text. I made this to make bias clearer when reading political articles.`,
+      "projectImage": "project-images/biaschecker-img.png",
+    },
+    {
       "projectTitle": "AcademicDict (in progress)",
       "projectURL": "https://github.com/ABashir01/academic-dict",
       "technologiesUsed": "Next.js, Node.js, Express.js, PostgreSQL, Chakra UI",
@@ -263,11 +270,11 @@ function App() {
           alignItems={"center"}
           justifyContent={"center"}
         >
-          <Heading as='h2' size={'lg'} marginBottom={["4%", null, null, "2%"]}>
+          <Heading as='h2' size={['md', null, null, 'lg']} marginBottom={["4%", null, null, "2%"]}>
             Contact
           </Heading>
 
-            <Text fontSize={"2xl"} w={"100%"} textAlign={"center"}>
+            <Text fontSize={["lg", null, null, "2xl"]} w={"100%"} textAlign={"center"}>
               <Link href='mailto:ahad_bashir@brown.edu' isExternal>Email</Link> | <Link href='https://www.linkedin.com/in/ahad-bashir-b5382b1b7/' isExternal>LinkedIn</Link> | <Link href='https://github.com/ABashir01' isExternal>Github</Link>
             </Text>
             
