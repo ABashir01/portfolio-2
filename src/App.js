@@ -32,6 +32,24 @@ function App() {
 
   const experienceList = [
     {
+      "expTitle": "Developer", 
+      "expLocation": "24Cast", 
+      "expLocationUrl": "https://24cast.org/", 
+      "expStartDate": "Sep 2024", 
+      "expEndDate": "Nov 2024", 
+      "expDescription": "Created web app for 2024 Election Night live map coverage for over 1000+ viewers in attendance. Used Next.js and AWS.", 
+      "expImageFile": "experience-images/24castorg_logo.jpg"
+    },
+    {
+      "expTitle": "Student Researcher", 
+      "expLocation": "Brown University", 
+      "expLocationUrl": "https://vivo.brown.edu/display/rbalestr", 
+      "expStartDate": "Sep 2024", 
+      "expEndDate": "Present", 
+      "expDescription": "Creating evaluation dataset for LLM fairness across different levels of language ability/jargon-use with Professor Randall Balestriero. Using Pytorch and Huggingface.", 
+      "expImageFile": "experience-images/brown-logo-transformed.jpeg"
+    },
+    {
       "expTitle": "Data Science Intern", 
       "expLocation": "UC Berkeley", 
       "expLocationUrl": "https://scriptencodinginitiative.github.io/", 
@@ -45,8 +63,8 @@ function App() {
       "expLocation": "University of Rhode Island", 
       "expLocationUrl": "https://web.uri.edu/bytelab/", 
       "expStartDate": "May 2024", 
-      "expEndDate": "Present", 
-      "expDescription": "Creating an online web app implementation of the smart cart study for use with one of the largest online shopping platforms. Using Next.js, Express.js, Python, and MySQL.", 
+      "expEndDate": "Aug 2024", 
+      "expDescription": "Created an online web app implementation of the smart cart study for use with one of the largest online shopping platforms. Used Next.js, Express.js, Python, and MySQL.", 
       "expImageFile": "experience-images/URI-Logo-transformed.jpeg"
     },
     {
@@ -160,10 +178,10 @@ function App() {
               <Text fontSize={["lg", 0, 0, "2xl"]} fontWeight={700}>Ahad Bashir</Text>
             </Box>
             <HStack spacing={5} fontSize={["md", 0, 0, "xl"]} display={["none", 0, 0, "flex"]} fontWeight={300}>
-              <AnchorLink href='#about'><Link>About</Link></AnchorLink>
-              <AnchorLink href='#experience'><Link>Experience</Link></AnchorLink>
-              <AnchorLink href='#projects'><Link>Projects</Link></AnchorLink>
-              <AnchorLink href='#contact'><Link>Contact</Link></AnchorLink>
+              <AnchorLink href='#about' offset='90'><Link>About</Link></AnchorLink>
+              <AnchorLink href='#experience' offset='90'><Link>Experience</Link></AnchorLink>
+              <AnchorLink href='#projects' offset='90'><Link>Projects</Link></AnchorLink>
+              <AnchorLink href='#contact' offset='90'><Link>Contact</Link></AnchorLink>
             </HStack>
             <IconButton 
               aria-label='Open Menu'
