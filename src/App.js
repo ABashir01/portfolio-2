@@ -3,8 +3,7 @@ import {
   Flex,
   Heading,
   Text,
-  Wrap,
-  WrapItem,
+  SimpleGrid,
   Link as ChakraLink,
   Center,
   HStack,
@@ -24,50 +23,54 @@ import { Link as RouterLink, NavLink, Route, Routes } from 'react-router-dom';
 
 const projectList = [
   {
-    projectTitle: 'Political Bias Checker',
+    projectTitle: 'Covid Hospitalization Predictive Model',
+    projectURL: 'https://github.com/ABashir01/covid-hospitalization-predictions',
+    technologiesUsed: 'R',
+    projectDescription:
+      "Built a model comparison pipeline to evaluate multiple time-series approaches for two-week-ahead COVID-19 hospitalization forecasting in Georgia using wastewater viral activity data; identified an ARX model as best-performing",
+  },
+  {
+    projectTitle: 'CVRP Solver',
+    projectURL: 'https://github.com/ABashir01/cs2951o-final',
+    technologiesUsed: 'Rust',
+    projectDescription:
+      "Implemented Capacitated Vehicle Routing Problem (CVRP) solver using bin-packing heuristics, 2-opt local search, simulated annealing, and randomized restarts to efficiently solve constrained routing problems",
+  },
+  {
+    projectTitle: 'RAG Chatbot for PartSelect',
+    projectURL: 'https://github.com/ABashir01/rag-chatbot-partselect',
+    technologiesUsed: 'OpenAI API, Qdrant (vector DB), Flask, React',
+    projectDescription:
+      "Built retrieval-augmented generation (RAG) chatbot to answer product support questions from documentation sources",
+  },
+  {
+    projectTitle: 'Article Bias Checker',
     projectURL: 'https://github.com/ABashir01/article-bias-checker',
-    technologiesUsed: 'Pytorch (Transformers), React, Python (Flask), Chakra UI',
+    technologiesUsed: 'Pytorch (Transformers), Flask, React',
     projectDescription:
-      "A website where you can submit text that is passed to a fine-tuned BERT model to identify political bias.",
-  },
-  {
-    projectTitle: 'AcademicDict (in progress)',
-    projectURL: 'https://github.com/ABashir01/academic-dict',
-    technologiesUsed: 'Next.js, Node.js, Express.js, PostgreSQL, Chakra UI',
-    projectDescription:
-      'A central location for academic terms and jargon, sorted by field for easier paper reading.',
-  },
-  {
-    projectTitle: 'Two Houses and a Plague',
-    projectURL: 'https://github.com/ABashir01/2-houses-and-a-plague',
-    technologiesUsed: 'MERN Stack, Bootstrap',
-    projectDescription:
-      'A phone-based web implementation inspired by social deduction card games for friend groups.',
-  },
-  {
-    projectTitle: 'Artist Similarity Calculator',
-    projectURL: 'https://github.com/ABashir01/artist-similarity-calculator',
-    technologiesUsed: 'React, Spotify API',
-    projectDescription:
-      'A small app that computes artist similarity using genres and related artists.',
-  },
-  {
-    projectTitle: 'Dota 2 Abilityle',
-    projectURL: 'https://github.com/ABashir01/dota-abilityle',
-    technologiesUsed: 'React, Django, PostgreSQL',
-    projectDescription:
-      'Wordle-style guessing game for Dota abilities, built for friends and community play.',
-  },
-  {
-    projectTitle: 'Simpl News',
-    projectURL: 'https://github.com/ABashir01/simpl-news',
-    technologiesUsed: 'Python (Flask)',
-    projectDescription:
-      'A stripped-down text and HTML news site based on brutalist principles for accessibility.',
+      "Fine-tuned Google's BERT transformer model for NLP-based political bias classification; deployed inference through a web application",
   },
 ];
 
 const experienceList = [
+  {
+    expTitle: 'Software Engineer',
+    expLocation: 'Uncountable',
+    expLocationUrl: 'https://www.uncountable.com',
+    expStartDate: 'Aug 2025',
+    expEndDate: 'Present',
+    expDescription:
+      'Building backend and data-platform features at Uncountable, so far including asynchronous LLM streaming, automated unit standardization, data validation safeguards, experiment filtering, and analysis pipeline enhancements, while improving platform reliability through production debugging and regression testing. Using React, Flask, and Postgres.',
+  },
+  {
+    expTitle: 'Student Researcher',
+    expLocation: 'Brown University',
+    expLocationUrl: 'https://vivo.brown.edu/display/rbalestr',
+    expStartDate: 'Sep 2024',
+    expEndDate: 'May 2025',
+    expDescription:
+      'Evaluated LLM fairness across different levels of language ability and jargon-use with Professor Randall Balestriero. Used Pytorch and Huggingface.',
+  },
   {
     expTitle: 'Developer',
     expLocation: '24Cast',
@@ -78,26 +81,17 @@ const experienceList = [
       'Created web app for 2024 Election Night live map coverage for over 1000+ viewers in attendance. Used Next.js and AWS.',
   },
   {
-    expTitle: 'Student Researcher',
-    expLocation: 'Brown University',
-    expLocationUrl: 'https://vivo.brown.edu/display/rbalestr',
-    expStartDate: 'Sep 2024',
-    expEndDate: 'Present',
-    expDescription:
-      'Creating evaluation dataset for LLM fairness across different levels of language ability and jargon-use with Professor Randall Balestriero. Using Pytorch and Huggingface.',
-  },
-  {
     expTitle: 'Data Science Intern',
     expLocation: 'UC Berkeley',
     expLocationUrl: 'https://scriptencodinginitiative.github.io/',
     expStartDate: 'Jun 2024',
-    expEndDate: 'Present',
+    expEndDate: 'Aug 2025',
     expDescription:
-      'Working with the Script Encoding Initiative to analyze script datasets and prepare a presentation for Unicode Technology Workshop. Using Python.',
+      'Worked with the Script Encoding Initiative to analyze script datasets and present at the Unicode Technology Workshop. Used Python.',
   },
   {
     expTitle: 'Full Stack Engineer',
-    expLocation: 'University of Rhode Island',
+    expLocation: 'URI',
     expLocationUrl: 'https://web.uri.edu/bytelab/',
     expStartDate: 'May 2024',
     expEndDate: 'Aug 2024',
@@ -115,7 +109,7 @@ const experienceList = [
   },
   {
     expTitle: 'Data Analyst Intern',
-    expLocation: 'University of Alabama at Birmingham',
+    expLocation: 'UAB',
     expLocationUrl: 'https://www.uab.edu/soph/home/biostatistics',
     expStartDate: 'Aug 2023',
     expEndDate: 'Jan 2024',
@@ -124,7 +118,7 @@ const experienceList = [
   },
   {
     expTitle: 'Cyber Security Intern',
-    expLocation: 'University of Alabama at Birmingham',
+    expLocation: 'UAB',
     expLocationUrl: 'https://www.uab.edu/it/home/security',
     expStartDate: 'Jun 2023',
     expEndDate: 'Aug 2023',
@@ -133,7 +127,7 @@ const experienceList = [
   },
   {
     expTitle: 'Web Developer',
-    expLocation: 'Birmingham Islamic Society',
+    expLocation: 'BIS',
     expLocationUrl: 'https://www.bisweb.org/',
     expStartDate: 'Jun 2023',
     expEndDate: 'Aug 2023',
@@ -142,7 +136,7 @@ const experienceList = [
   },
   {
     expTitle: 'Research Assistant',
-    expLocation: 'Watson Institute - CHRHS',
+    expLocation: 'CHRHS',
     expLocationUrl: 'https://watson.brown.edu/chrhs/research/civil-military-policy-coordination-COVID',
     expStartDate: 'Dec 2021',
     expEndDate: 'May 2023',
@@ -173,7 +167,7 @@ function SiteHeader() {
   return (
     <>
       <Flex className="topbar" as="header" position="sticky" top={0} zIndex={1000}>
-        <Center w={["92%", null, null, "82%"]} h="100%" justifyContent="space-between">
+        <Center className="content-shell" h="100%" justifyContent="space-between">
           <HStack spacing={3}>
             <Image src={logoSrc} alt="AB logo" className="brand-logo" />
             <ChakraLink as={RouterLink} to="/" className="brand" _hover={{ textDecoration: 'none' }}>
@@ -231,31 +225,33 @@ function HomePage() {
   return (
     <>
       <Flex className="hero" w="100%" justifyContent="center">
-        <Flex w={["92%", null, null, "82%"]} direction="column" py={[10, null, null, 16]}>
+        <Flex className="content-shell" direction="column" py={[10, null, null, 16]}>
           <Heading className="hero-title">
             <br />
-            I'M AHAD
+            I'M AHAD.
           </Heading>
           <Text className="hero-copy">
-            I'm interested in using my technical skills to to further research and help people. I also love writing + playing music - I play guitar and bass and am always down to collaborate! I also love playing board games, reading, and am learning to paint.
+            I'm interested in using my technical skills to further research and help people. I also love writing and playing music - I play guitar and bass and am always down to collaborate. In my free time, I love playing board games, reading, and have started painting.
           </Text>
         </Flex>
       </Flex>
 
       <Flex className="section paper" w="100%" justifyContent="center">
-        <Flex w={["92%", null, null, "82%"]} direction="column" py={[10, null, null, 14]}>
+        <Flex className="content-shell" direction="column" py={[10, null, null, 14]}>
           <Heading className="section-title dark">Now</Heading>
-          <Wrap spacing={[4, null, null, 5]} mt={6}>
-            <WrapItem w={["100%", null, null, "48%"]}>
-              <Box className="ink-card" w="100%">
-                <Text className="card-head">Currently</Text>
-                <Text className="desc light">Using LLMs to reliably extract data from semi-structured sources (recipe books, EMRs, etc.)</Text>
-                <Text className="desc light">Figuring out determinstic contracts for LLMs (for example, same prompt + model = same response)</Text>
-              </Box>
-            </WrapItem>
+          <Text className="section-note dark">currently in rotation</Text>
 
-            <WrapItem w={["100%", null, null, "48%"]}>
-              <Box className="paper-card" w="100%">
+          <SimpleGrid columns={[1, null, null, 2]} spacing={[4, null, null, 6]} mt={6}>
+            <Box w="100%">
+              <Box className="ink-card zine-card-left" w="100%">
+                <Text className="card-head">Currently</Text>
+                <Text className="desc light">Using LLMs to reliably extract data from semi-structured sources like recipe books and EMRs.</Text>
+                <Text className="desc light">Figuring out deterministic contracts for LLM calls so systems are dependable.</Text>
+              </Box>
+            </Box>
+
+            <Box w="100%">
+              <Box className="paper-card zine-card-right" w="100%">
                 <Text className="card-head dark">Other Stuff</Text>
                 <Text className="desc">
                   Listening to:{' '}
@@ -277,11 +273,14 @@ function HomePage() {
                   <ChakraLink className="text-link dark" href="https://boardgamegeek.com/boardgame/291572/oath" isExternal>
                     Oath
                   </ChakraLink>
-                  .
+                  {' '}and{' '}
+                  <ChakraLink className="text-link dark" href="https://boardgamegeek.com/boardgame/359871/arcs" isExternal>
+                    Arcs
+                  </ChakraLink>
                 </Text>
               </Box>
-            </WrapItem>
-          </Wrap>
+            </Box>
+          </SimpleGrid>
         </Flex>
       </Flex>
     </>
@@ -290,22 +289,23 @@ function HomePage() {
 
 function ProjectsPage() {
   return (
-    <Flex className="section ink" w="100%" justifyContent="center">
-      <Flex w={["92%", null, null, "82%"]} direction="column" py={[10, null, null, 14]}>
-        <Heading className="section-title">Projects</Heading>
-        <Wrap spacing={[4, null, null, 5]} mt={6}>
+    <Flex className="section paper" w="100%" justifyContent="center">
+      <Flex className="content-shell" direction="column" py={[10, null, null, 14]}>
+        <Heading className="section-title dark">Projects</Heading>
+        <Text className="section-note dark">selected projects and experiments</Text>
+
+        <SimpleGrid columns={[1, null, null, 2]} spacing={[4, null, null, 6]} mt={6}>
           {projectList.map((project, idx) => (
-            <WrapItem key={idx} w={["100%", null, null, "48%"]}>
-              <ChakraLink href={project.projectURL} isExternal className="card-link" w="100%">
-                <Box className="paper-card" w="100%">
-                  <Text className="project-link">{project.projectTitle}</Text>
-                  <Text className="meta">{project.technologiesUsed}</Text>
-                  <Text className="desc">{project.projectDescription}</Text>
-                </Box>
-              </ChakraLink>
-            </WrapItem>
+            <ChakraLink key={idx} href={project.projectURL} isExternal className="card-link zine-link" w="100%">
+              <Box className="paper-card zine-card project-card" w="100%">
+                <Text className="project-link">{project.projectTitle}</Text>
+                <Text className="meta">{project.technologiesUsed}</Text>
+                <Text className="desc">{project.projectDescription}</Text>
+                <Text className="link-cue">Open project -&gt;</Text>
+              </Box>
+            </ChakraLink>
           ))}
-        </Wrap>
+        </SimpleGrid>
       </Flex>
     </Flex>
   );
@@ -314,19 +314,22 @@ function ProjectsPage() {
 function ExperiencePage() {
   return (
     <Flex className="section paper" w="100%" justifyContent="center">
-      <Flex w={["92%", null, null, "82%"]} direction="column" py={[10, null, null, 14]}>
+      <Flex className="content-shell" direction="column" py={[10, null, null, 14]}>
         <Heading className="section-title dark">Experience</Heading>
-        <VStack spacing={4} mt={6} align="stretch">
+        <Text className="section-note dark">where i've worked and researched</Text>
+
+        <SimpleGrid columns={[1, null, null, 2]} spacing={[4, null, null, 6]} mt={6}>
           {experienceList.map((exp, idx) => (
-            <ChakraLink key={idx} href={exp.expLocationUrl} isExternal className="card-link">
+            <ChakraLink key={idx} href={exp.expLocationUrl} isExternal className="card-link zine-link">
               <Box className="paper-card exp-card">
                 <Text className="meta dark">{exp.expStartDate} - {exp.expEndDate}</Text>
                 <Text className="project-link dark-link">{exp.expTitle} / {exp.expLocation}</Text>
                 <Text className="desc">{exp.expDescription}</Text>
+                <Text className="link-cue">Open role -&gt;</Text>
               </Box>
             </ChakraLink>
           ))}
-        </VStack>
+        </SimpleGrid>
       </Flex>
     </Flex>
   );
@@ -335,7 +338,7 @@ function ExperiencePage() {
 function SiteFooter() {
   return (
     <Flex className="footer" w="100%" justifyContent="center" as="footer">
-      <Flex w={["92%", null, null, "82%"]} py={8}>
+      <Flex className="content-shell" py={8}>
         <Text className="contact-row">
           <ChakraLink className="text-link light" href="mailto:ahad_bashir@brown.edu" isExternal>
             Email
@@ -359,7 +362,7 @@ function App() {
     <Flex className="site-root" maxWidth="100vw" flexDirection="column" minH="100vh">
       <SiteHeader />
 
-      <Flex flex="1" direction="column" alignItems="center">
+      <Flex className="page-content" flex="1" direction="column" alignItems="stretch">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<HomePage />} />
