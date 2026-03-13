@@ -1,12 +1,11 @@
-import { 
-  Box, 
+import {
+  Box,
   Flex,
   Heading,
   Text,
-  Divider,
   Wrap,
   WrapItem,
-  Link,
+  Link as ChakraLink,
   Center,
   HStack,
   IconButton,
@@ -14,294 +13,363 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-  DrawerHeader,
   DrawerBody,
   useDisclosure,
+  VStack,
+  Image,
 } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import React from 'react';
-import AnchorLink from 'react-anchor-link-smooth-scroll';
+import { Link as RouterLink, NavLink, Route, Routes } from 'react-router-dom';
 
-import ExperienceCard from './components/experienceCard';
-import ProjectCard from './components/projectCard';
+const projectList = [
+  {
+    projectTitle: 'Political Bias Checker',
+    projectURL: 'https://github.com/ABashir01/article-bias-checker',
+    technologiesUsed: 'Pytorch (Transformers), React, Python (Flask), Chakra UI',
+    projectDescription:
+      "A website where you can submit text that is passed to a fine-tuned BERT model to identify political bias.",
+  },
+  {
+    projectTitle: 'AcademicDict (in progress)',
+    projectURL: 'https://github.com/ABashir01/academic-dict',
+    technologiesUsed: 'Next.js, Node.js, Express.js, PostgreSQL, Chakra UI',
+    projectDescription:
+      'A central location for academic terms and jargon, sorted by field for easier paper reading.',
+  },
+  {
+    projectTitle: 'Two Houses and a Plague',
+    projectURL: 'https://github.com/ABashir01/2-houses-and-a-plague',
+    technologiesUsed: 'MERN Stack, Bootstrap',
+    projectDescription:
+      'A phone-based web implementation inspired by social deduction card games for friend groups.',
+  },
+  {
+    projectTitle: 'Artist Similarity Calculator',
+    projectURL: 'https://github.com/ABashir01/artist-similarity-calculator',
+    technologiesUsed: 'React, Spotify API',
+    projectDescription:
+      'A small app that computes artist similarity using genres and related artists.',
+  },
+  {
+    projectTitle: 'Dota 2 Abilityle',
+    projectURL: 'https://github.com/ABashir01/dota-abilityle',
+    technologiesUsed: 'React, Django, PostgreSQL',
+    projectDescription:
+      'Wordle-style guessing game for Dota abilities, built for friends and community play.',
+  },
+  {
+    projectTitle: 'Simpl News',
+    projectURL: 'https://github.com/ABashir01/simpl-news',
+    technologiesUsed: 'Python (Flask)',
+    projectDescription:
+      'A stripped-down text and HTML news site based on brutalist principles for accessibility.',
+  },
+];
 
+const experienceList = [
+  {
+    expTitle: 'Developer',
+    expLocation: '24Cast',
+    expLocationUrl: 'https://24cast.org/',
+    expStartDate: 'Sep 2024',
+    expEndDate: 'Nov 2024',
+    expDescription:
+      'Created web app for 2024 Election Night live map coverage for over 1000+ viewers in attendance. Used Next.js and AWS.',
+  },
+  {
+    expTitle: 'Student Researcher',
+    expLocation: 'Brown University',
+    expLocationUrl: 'https://vivo.brown.edu/display/rbalestr',
+    expStartDate: 'Sep 2024',
+    expEndDate: 'Present',
+    expDescription:
+      'Creating evaluation dataset for LLM fairness across different levels of language ability and jargon-use with Professor Randall Balestriero. Using Pytorch and Huggingface.',
+  },
+  {
+    expTitle: 'Data Science Intern',
+    expLocation: 'UC Berkeley',
+    expLocationUrl: 'https://scriptencodinginitiative.github.io/',
+    expStartDate: 'Jun 2024',
+    expEndDate: 'Present',
+    expDescription:
+      'Working with the Script Encoding Initiative to analyze script datasets and prepare a presentation for Unicode Technology Workshop. Using Python.',
+  },
+  {
+    expTitle: 'Full Stack Engineer',
+    expLocation: 'University of Rhode Island',
+    expLocationUrl: 'https://web.uri.edu/bytelab/',
+    expStartDate: 'May 2024',
+    expEndDate: 'Aug 2024',
+    expDescription:
+      'Built an online implementation of a smart cart study for one of the largest online shopping platforms. Used Next.js, Express.js, Python, and MySQL.',
+  },
+  {
+    expTitle: 'Research Assistant',
+    expLocation: 'Brown University',
+    expLocationUrl: 'https://aarushirita.github.io/papers/',
+    expStartDate: 'Feb 2024',
+    expEndDate: 'Present',
+    expDescription:
+      'Studied sentiment analysis data for different social media algorithm treatments in India. Using Python, Google Cloud, and BigQuery.',
+  },
+  {
+    expTitle: 'Data Analyst Intern',
+    expLocation: 'University of Alabama at Birmingham',
+    expLocationUrl: 'https://www.uab.edu/soph/home/biostatistics',
+    expStartDate: 'Aug 2023',
+    expEndDate: 'Jan 2024',
+    expDescription:
+      'Worked with Professor Gary Cutter to clean and analyze large datasets for biostatistical research. Used Python and SAS.',
+  },
+  {
+    expTitle: 'Cyber Security Intern',
+    expLocation: 'University of Alabama at Birmingham',
+    expLocationUrl: 'https://www.uab.edu/it/home/security',
+    expStartDate: 'Jun 2023',
+    expEndDate: 'Aug 2023',
+    expDescription:
+      'Built a tool to sort and respond to reported spam emails and organized application workflows. Used Python.',
+  },
+  {
+    expTitle: 'Web Developer',
+    expLocation: 'Birmingham Islamic Society',
+    expLocationUrl: 'https://www.bisweb.org/',
+    expStartDate: 'Jun 2023',
+    expEndDate: 'Aug 2023',
+    expDescription:
+      'Worked on internal systems for managing bank transactions and resolving form workflow issues. Used Salesforce Apex and JavaScript.',
+  },
+  {
+    expTitle: 'Research Assistant',
+    expLocation: 'Watson Institute - CHRHS',
+    expLocationUrl: 'https://watson.brown.edu/chrhs/research/civil-military-policy-coordination-COVID',
+    expStartDate: 'Dec 2021',
+    expEndDate: 'May 2023',
+    expDescription:
+      'Contributed to public health research on civil-military coordination during COVID-19. Used NVivo.',
+  },
+  {
+    expTitle: 'Intern',
+    expLocation: 'Nonviolence International',
+    expLocationUrl: 'https://www.nonviolenceinternational.net/',
+    expStartDate: 'Jun 2022',
+    expEndDate: 'Dec 2022',
+    expDescription:
+      'Contributed to the Nonviolent Tactics Database and solved website maintenance issues. Used MySQL and HTML/CSS.',
+  },
+];
 
-function App() {
-  
-  const {isOpen, onOpen, onClose} = useDisclosure();
+const navItems = [
+  { to: '/', label: 'about / now' },
+  { to: '/projects', label: 'projects' },
+  { to: '/experience', label: 'experience' },
+];
 
-  const experienceList = [
-    {
-      "expTitle": "Developer", 
-      "expLocation": "24Cast", 
-      "expLocationUrl": "https://24cast.org/", 
-      "expStartDate": "Sep 2024", 
-      "expEndDate": "Nov 2024", 
-      "expDescription": "Created web app for 2024 Election Night live map coverage for over 1000+ viewers in attendance. Used Next.js and AWS.", 
-      "expImageFile": "experience-images/24castorg_logo.jpg"
-    },
-    {
-      "expTitle": "Student Researcher", 
-      "expLocation": "Brown University", 
-      "expLocationUrl": "https://vivo.brown.edu/display/rbalestr", 
-      "expStartDate": "Sep 2024", 
-      "expEndDate": "Present", 
-      "expDescription": "Creating evaluation dataset for LLM fairness across different levels of language ability/jargon-use with Professor Randall Balestriero. Using Pytorch and Huggingface.", 
-      "expImageFile": "experience-images/brown-logo-transformed.jpeg"
-    },
-    {
-      "expTitle": "Data Science Intern", 
-      "expLocation": "UC Berkeley", 
-      "expLocationUrl": "https://scriptencodinginitiative.github.io/", 
-      "expStartDate": "Jun 2024", 
-      "expEndDate": "Present", 
-      "expDescription": "Working with the Script Encoding Initiative to perform data analysis on previously added scripts, currently preparing a presentation for Unicode Technology Workshop. Using Python.", 
-      "expImageFile": "experience-images/UCB-Logo-transformed.jpeg"
-    },
-    {
-      "expTitle": "Full Stack Engineer", 
-      "expLocation": "University of Rhode Island", 
-      "expLocationUrl": "https://web.uri.edu/bytelab/", 
-      "expStartDate": "May 2024", 
-      "expEndDate": "Aug 2024", 
-      "expDescription": "Created an online web app implementation of the smart cart study for use with one of the largest online shopping platforms. Used Next.js, Express.js, Python, and MySQL.", 
-      "expImageFile": "experience-images/URI-Logo-transformed.jpeg"
-    },
-    {
-      "expTitle": "Research Assistant", 
-      "expLocation": "Brown University", 
-      "expLocationUrl": "https://aarushirita.github.io/papers/", 
-      "expStartDate": "Feb 2024", 
-      "expEndDate": "Present", 
-      "expDescription": "Studying sentiment analysis data regarding different social media algorithm treatments in India. Using Python (Pandas), Google Cloud, and BigQuery.", 
-      "expImageFile": "experience-images/brown-logo-transformed.jpeg"
-    },
-    {
-      "expTitle": "Data Analyst Intern", 
-      "expLocation": "University of Alabama at Birmingham", 
-      "expLocationUrl": "https://www.uab.edu/soph/home/biostatistics", 
-      "expStartDate": "Aug 2023", 
-      "expEndDate": "Jan 2024", 
-      "expDescription": "Worked with Professor Gary Cutter in order to clean up + analyze large datasets for biostatistical research. Used Python and SAS.", 
-      "expImageFile": "experience-images/UAB-Logo-transformed.jpeg"
-    },
-    {
-      "expTitle": "Cyber Security Intern", 
-      "expLocation": "University of Alabama at Birmingham", 
-      "expLocationUrl": "https://www.uab.edu/it/home/security", 
-      "expStartDate": "Jun 2023", 
-      "expEndDate": "Aug 2023", 
-      "expDescription": "Created tool to automatically sort and respond to reported spam emails, and, also, sorted hundreds of applications for company. Used Python.", 
-      "expImageFile": "experience-images/UAB-Logo-transformed.jpeg"
-    },
-    {
-      "expTitle": "Web Developer", 
-      "expLocation": "Birmingham Islamic Society", 
-      "expLocationUrl": "https://www.bisweb.org/", 
-      "expStartDate": "Jun 2023", 
-      "expEndDate": "Aug 2023", 
-      "expDescription": "Worked on internal website - creating a system for managing bank transactions and resolving application form issues. Used Salesforce Apex and Javascript.", 
-      "expImageFile": "experience-images/bis-logo-transformed.png"
-    },
-    {
-      "expTitle": "Research Assistant", 
-      "expLocation": "Watson Institute - CHRHS", 
-      "expLocationUrl": "https://watson.brown.edu/chrhs/research/civil-military-policy-coordination-COVID", 
-      "expStartDate": "Dec 2021", 
-      "expEndDate": "May 2023", 
-      "expDescription": "Worked on public health research paper regarding civil-military coordination during COVID-19 for entire duration of project. Used NVivo.", 
-      "expImageFile": "experience-images/brown-logo-transformed.jpeg"
-    },
-    {
-      "expTitle": "Intern", 
-      "expLocation": "Nonviolence International", 
-      "expLocationUrl": "https://www.nonviolenceinternational.net/", 
-      "expStartDate": "Jun 2022", 
-      "expEndDate": "Dec 2022", 
-      "expDescription": "Worked on Nonviolent Tactics Database and on solving website issues + updating parts of website. Used MySQL and HTML/CSS.", 
-      "expImageFile": "experience-images/NVI-Logo-transformed.jpeg"
-    },
-  ]
-
-  const projectList = [
-    {
-      "projectTitle": "Political Bias Checker",
-      "projectURL": "https://github.com/ABashir01/article-bias-checker",
-      "technologiesUsed": "Pytorch (Transformers), React, Python (Flask), Chakra UI",
-      "projectDescription": `A website where you can submit a piece of text that is then passed to an AI model (fine-tuned version of Google's BERT) which determines the political bias of the text. I made this to make bias clearer when reading political articles.`,
-      "projectImage": "project-images/biaschecker-img.png",
-    },
-    {
-      "projectTitle": "AcademicDict (in progress)",
-      "projectURL": "https://github.com/ABashir01/academic-dict",
-      "technologiesUsed": "Next.js, Node.js, Express.js, PostgreSQL, Chakra UI",
-      "projectDescription": "A single central location for academic terms + jargon sorted by academic field. Motivated by reading papers in unfamiliar fields where it would have been useful to have a central repository of terms.",
-      "projectImage": "project-images/academicdict-img.png",
-    },
-    {
-      "projectTitle": "Two Houses and a Plague",
-      "projectURL": "https://github.com/ABashir01/2-houses-and-a-plague",
-      "technologiesUsed": "MERN Stack (MongoDB, Express.js, React, Node.js), Bootstrap",
-      "projectDescription": `Online implementation of Two Rooms and a Boom where you can use your phone instead of a card. I made this to play with my friends.`,
-      "projectImage": "project-images/twohouses-img.png",
-    },
-    {
-      "projectTitle": "Artist Similarity Calculator",
-      "projectURL": "https://github.com/ABashir01/artist-similarity-calculator",
-      "technologiesUsed": "React, Spotify API",
-      "projectDescription": "Simple web app that calculates a similarity percentage between 2 artists based on genres + similar artists. I made this to help with matching members of my club, Music Connect.",
-      "projectImage": "project-images/artistsimilaritycalc-img.png",
-    },
-    {
-      "projectTitle": "Dota 2 Abilityle",
-      "projectURL": "https://github.com/ABashir01/dota-abilityle",
-      "technologiesUsed": "React, Python (Django), PostgreSQL",
-      "projectDescription": "Wordle inspired game based around trying to guess the name of a hero's ability in Dota 2. I made this for my friends who I play Dota 2 with.",
-      "projectImage": "project-images/dota2ability-img.png",
-    },
-    {
-      "projectTitle": "Simpl News",
-      "projectURL": "https://github.com/ABashir01/simpl-news",
-      "technologiesUsed": "Python (Flask)",
-      "projectDescription": `A stripped down text and HTML only website with a design based on Brutalist Web Design principles. I made this this to increase news accessibility in areas with slow internet (not currently published due to legality).`,
-      "projectImage": "project-images/simplnews-img.png",
-    },
-  ]
-
+function SiteHeader() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const logoSrc = `${process.env.PUBLIC_URL}/favicon.ico`;
 
   return (
-    <Flex maxWidth={"100vw"} flexDirection={"column"} alignItems={"center"} bgColor={"gray.100"} overflow={"clip"}>
+    <>
+      <Flex className="topbar" as="header" position="sticky" top={0} zIndex={1000}>
+        <Center w={["92%", null, null, "82%"]} h="100%" justifyContent="space-between">
+          <HStack spacing={3}>
+            <Image src={logoSrc} alt="AB logo" className="brand-logo" />
+            <ChakraLink as={RouterLink} to="/" className="brand" _hover={{ textDecoration: 'none' }}>
+              AHAD BASHIR
+            </ChakraLink>
+          </HStack>
 
-      <Flex w={"100%"} h={"10vh"} bgColor={"white"} justifyContent={"center"} as={'header'} position={"sticky"} top={0} zIndex={1000} borderBottom={"1px solid"} borderColor={"black"}>
-        <Center w={["90%", 0, 0, "60%"]} h={"10vh"} justifyContent={"space-between"}>
-            <Box>
-              <Text fontSize={["lg", 0, 0, "2xl"]} fontWeight={700}>Ahad Bashir</Text>
-            </Box>
-            <HStack spacing={5} fontSize={["md", 0, 0, "xl"]} display={["none", 0, 0, "flex"]} fontWeight={300}>
-              <AnchorLink href='#about' offset='90'><Link>About</Link></AnchorLink>
-              <AnchorLink href='#experience' offset='90'><Link>Experience</Link></AnchorLink>
-              <AnchorLink href='#projects' offset='90'><Link>Projects</Link></AnchorLink>
-              <AnchorLink href='#contact' offset='90'><Link>Contact</Link></AnchorLink>
-            </HStack>
-            <IconButton 
-              aria-label='Open Menu'
-              icon={<HamburgerIcon />}
-              display={["flex", 0, 0, "none"]}
-              onClick={onOpen}
-            />
+          <HStack spacing={6} display={["none", null, null, "flex"]} className="menu-row">
+            {navItems.map((item) => (
+              <ChakraLink
+                key={item.to}
+                as={NavLink}
+                to={item.to}
+                className={({ isActive }) => `menu-link${isActive ? ' active' : ''}`}
+              >
+                {item.label}
+              </ChakraLink>
+            ))}
+          </HStack>
+
+          <IconButton
+            aria-label="Open Menu"
+            icon={<HamburgerIcon />}
+            display={["flex", null, null, "none"]}
+            onClick={onOpen}
+            bg="black"
+            color="white"
+            border="2px solid"
+            borderColor="white"
+            borderRadius="none"
+          />
         </Center>
       </Flex>
 
       <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
         <DrawerOverlay />
-        <DrawerContent>
-          <DrawerHeader></DrawerHeader>
-          <DrawerCloseButton />
-          <DrawerBody h={"100vh"}>
-            <Flex flexDir={"column"} h={"100vw"} fontWeight={300} fontSize={"3xl"} justifyContent={"space-around"}>
-              <AnchorLink href='#about' onClick={onClose}><Link>About</Link></AnchorLink>
-              <AnchorLink href='#experience' onClick={onClose}><Link>Experience</Link></AnchorLink>
-              <AnchorLink href='#projects' onClick={onClose}><Link>Projects</Link></AnchorLink>
-              <AnchorLink href='#contact' onClick={onClose}><Link>Contact</Link></AnchorLink>
-            </Flex>
+        <DrawerContent bg="white" color="black" borderLeft="2px solid black">
+          <DrawerCloseButton mt={2} />
+          <DrawerBody h="100vh" pt={20}>
+            <VStack align="start" spacing={8}>
+              {navItems.map((item) => (
+                <ChakraLink key={item.to} as={RouterLink} to={item.to} onClick={onClose} className="menu-link mobile">
+                  {item.label}
+                </ChakraLink>
+              ))}
+            </VStack>
           </DrawerBody>
         </DrawerContent>
       </Drawer>
-      
-      <Flex w={"100vw"} h={"50vh"} justifyContent={"center"} bgGradient={'linear(to-br, gray.500, gray.700)'} borderBottom={"1px solid"} borderColor={"black"} id='about'>
-        <Flex w={["90%", 0, 0, "60%"]} flexDirection={"column"} color={"white"} justifyContent={"center"} fontSize={"lg"}> {/* Intro section */}
-          <Heading as='h1' size={["lg", 0, 0, 'xl']} marginBottom={"2%"}>
-            Hey, I'm Ahad Bashir
+    </>
+  );
+}
+
+function HomePage() {
+  return (
+    <>
+      <Flex className="hero" w="100%" justifyContent="center">
+        <Flex w={["92%", null, null, "82%"]} direction="column" py={[10, null, null, 16]}>
+          <Heading className="hero-title">
+            <br />
+            I'M AHAD
           </Heading>
-          <Text w={"100%"} noOfLines={[7, 0, 0, 5]} fontWeight={300} fontSize={["sm", 0, 0, "lg"]}>
-            I'm a Masters in Computer Science student at Brown. I love writing music (I'm really into Japanese Rock bands like <Link fontWeight={700} href='https://open.spotify.com/track/0WaaPFt4Qy8sVfxKz43bCD?si=e0f318236cc34a33' isExternal>Asian Kung-Fu Generation→</Link> and <Link fontWeight={700} href='https://open.spotify.com/track/3iZmntAKfKaL1WLNEOFqb8?si=3b229b81c9214ff9' isExternal>Ling Tosite Sigure→</Link>), playing board games (my favorite right now is <Link fontWeight={700} href='https://boardgamegeek.com/boardgame/291572/oath' isExternal>Oath→</Link>), and learning. I'm particularly interested in the application of my technical skills to further research and love working with people advancing human knowledge. 
+          <Text className="hero-copy">
+            I'm interested in using my technical skills to to further research and help people. I also love writing + playing music - I play guitar and bass and am always down to collaborate! I also love playing board games, reading, and am learning to paint.
           </Text>
         </Flex>
       </Flex>
-      
 
-      <Divider w={["90%", 0, 0, "60%"]} m={["3%", 0, 0, "1%"]} borderColor={"gray.100"}/>
+      <Flex className="section paper" w="100%" justifyContent="center">
+        <Flex w={["92%", null, null, "82%"]} direction="column" py={[10, null, null, 14]}>
+          <Heading className="section-title dark">Now</Heading>
+          <Wrap spacing={[4, null, null, 5]} mt={6}>
+            <WrapItem w={["100%", null, null, "48%"]}>
+              <Box className="ink-card" w="100%">
+                <Text className="card-head">Currently</Text>
+                <Text className="desc light">Using LLMs to reliably extract data from semi-structured sources (recipe books, EMRs, etc.)</Text>
+                <Text className="desc light">Figuring out determinstic contracts for LLMs (for example, same prompt + model = same response)</Text>
+              </Box>
+            </WrapItem>
 
-      <Flex w={"100%"} justifyContent={"center"} id='experience'>
-        <Flex w={["90%", 0, 0, "60%"]} flexDirection={"column"} alignItems={["center", 0, 0, "stretch"]}>
-          <Heading as='h2' size={'lg'} marginBottom={["4%", 0, 0, "2%"]}>
-            Experience
-          </Heading>
-
-          <Wrap>
-            {experienceList.map((experience, idx) => (
-              <WrapItem key={idx}>
-                <ExperienceCard 
-                  expTitle={experience["expTitle"]} 
-                  expLocation={experience["expLocation"]} 
-                  expLocationUrl={experience["expLocationUrl"]} 
-                  expStartDate={experience["expStartDate"]} 
-                  expEndDate={experience["expEndDate"]}
-                  expDescription={experience["expDescription"]}
-                  expImageFile={experience["expImageFile"]}
-                />
-              </WrapItem>
-            ))}
+            <WrapItem w={["100%", null, null, "48%"]}>
+              <Box className="paper-card" w="100%">
+                <Text className="card-head dark">Other Stuff</Text>
+                <Text className="desc">
+                  Listening to:{' '}
+                  <ChakraLink className="text-link dark" href="https://open.spotify.com/track/3c1HWTrM2HaPvOwIPDIa8z?si=b7e8aba4179d44c6" isExternal>
+                    Tenchio
+                  </ChakraLink>
+                  ,{' '}
+                  <ChakraLink className="text-link dark" href="https://open.spotify.com/track/0WaaPFt4Qy8sVfxKz43bCD?si=e0f318236cc34a33" isExternal>
+                    Asian Kung-Fu Generation
+                  </ChakraLink>
+                  , and{' '}
+                  <ChakraLink className="text-link dark" href="https://open.spotify.com/track/3iZmntAKfKaL1WLNEOFqb8?si=3b229b81c9214ff9" isExternal>
+                    Ling Tosite Sigure
+                  </ChakraLink>
+                  .
+                </Text>
+                <Text className="desc">
+                  Playing:{' '}
+                  <ChakraLink className="text-link dark" href="https://boardgamegeek.com/boardgame/291572/oath" isExternal>
+                    Oath
+                  </ChakraLink>
+                  .
+                </Text>
+              </Box>
+            </WrapItem>
           </Wrap>
         </Flex>
       </Flex>
+    </>
+  );
+}
 
-      <Divider w={["90%", 0, 0, "60%"]} m={["3%", 0, 0, "1%"]} borderColor={"black"}/>
-
-      <Flex w={"100%"} justifyContent={"center"} id='projects'>
-        <Flex w={["90%", 0, 0, "60%"]} flexDirection={"column"} alignItems={["center", 0, 0, "stretch"]}>
-          <Heading as='h2' size={'lg'} marginBottom={["4%", 0, 0, "2%"]}>
-            Personal Projects
-          </Heading>
-
-          <Wrap>
-            {projectList.map((project, idx) => (
-              <WrapItem key={idx}>
-                <ProjectCard 
-                  projectTitle={project["projectTitle"]} 
-                  projectURL={project["projectURL"]} 
-                  technologiesUsed={project["technologiesUsed"]} 
-                  projectDescription={project["projectDescription"]}
-                  projectImage={project["projectImage"]}
-                />
-              </WrapItem>
-            ))}
-          </Wrap>
-        </Flex>
+function ProjectsPage() {
+  return (
+    <Flex className="section ink" w="100%" justifyContent="center">
+      <Flex w={["92%", null, null, "82%"]} direction="column" py={[10, null, null, 14]}>
+        <Heading className="section-title">Projects</Heading>
+        <Wrap spacing={[4, null, null, 5]} mt={6}>
+          {projectList.map((project, idx) => (
+            <WrapItem key={idx} w={["100%", null, null, "48%"]}>
+              <ChakraLink href={project.projectURL} isExternal className="card-link" w="100%">
+                <Box className="paper-card" w="100%">
+                  <Text className="project-link">{project.projectTitle}</Text>
+                  <Text className="meta">{project.technologiesUsed}</Text>
+                  <Text className="desc">{project.projectDescription}</Text>
+                </Box>
+              </ChakraLink>
+            </WrapItem>
+          ))}
+        </Wrap>
       </Flex>
-      
+    </Flex>
+  );
+}
 
-      <Flex 
-        w={"100%"} 
-        justifyContent={"center"} 
-        id='contact'
-        bgColor={"white"}
-        borderTop={"1px solid"}
-        borderColor={"black"}
-        marginTop={["4%", null, null, "2%"]}
-        paddingTop={["2%", null, null, "1%"]}
-        paddingBottom={["2%", null, null, "1%"]}
-      >
-        <Flex 
-          w={["90%", 0, 0, "60%"]} 
-          flexDirection={"column"} 
-          alignItems={"center"}
-          justifyContent={"center"}
-        >
-          <Heading as='h2' size={['md', null, null, 'lg']} marginBottom={["4%", null, null, "2%"]}>
-            Contact
-          </Heading>
+function ExperiencePage() {
+  return (
+    <Flex className="section paper" w="100%" justifyContent="center">
+      <Flex w={["92%", null, null, "82%"]} direction="column" py={[10, null, null, 14]}>
+        <Heading className="section-title dark">Experience</Heading>
+        <VStack spacing={4} mt={6} align="stretch">
+          {experienceList.map((exp, idx) => (
+            <ChakraLink key={idx} href={exp.expLocationUrl} isExternal className="card-link">
+              <Box className="paper-card exp-card">
+                <Text className="meta dark">{exp.expStartDate} - {exp.expEndDate}</Text>
+                <Text className="project-link dark-link">{exp.expTitle} / {exp.expLocation}</Text>
+                <Text className="desc">{exp.expDescription}</Text>
+              </Box>
+            </ChakraLink>
+          ))}
+        </VStack>
+      </Flex>
+    </Flex>
+  );
+}
 
-            <Text fontSize={["lg", null, null, "2xl"]} w={"100%"} textAlign={"center"}>
-              <Link href='mailto:ahad_bashir@brown.edu' isExternal>Email</Link> | <Link href='https://www.linkedin.com/in/ahad-bashir-b5382b1b7/' isExternal>LinkedIn</Link> | <Link href='https://github.com/ABashir01' isExternal>Github</Link>
-            </Text>
-            
-        </Flex>
+function SiteFooter() {
+  return (
+    <Flex className="footer" w="100%" justifyContent="center" as="footer">
+      <Flex w={["92%", null, null, "82%"]} py={8}>
+        <Text className="contact-row">
+          <ChakraLink className="text-link light" href="mailto:ahad_bashir@brown.edu" isExternal>
+            Email
+          </ChakraLink>{' '}
+          /{' '}
+          <ChakraLink className="text-link light" href="https://www.linkedin.com/in/ahad-bashir-b5382b1b7/" isExternal>
+            LinkedIn
+          </ChakraLink>{' '}
+          /{' '}
+          <ChakraLink className="text-link light" href="https://github.com/ABashir01" isExternal>
+            Github
+          </ChakraLink>
+        </Text>
+      </Flex>
+    </Flex>
+  );
+}
+
+function App() {
+  return (
+    <Flex className="site-root" maxWidth="100vw" flexDirection="column" minH="100vh">
+      <SiteHeader />
+
+      <Flex flex="1" direction="column" alignItems="center">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<HomePage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/experience" element={<ExperiencePage />} />
+          <Route path="*" element={<HomePage />} />
+        </Routes>
       </Flex>
 
-
-
-    
+      <SiteFooter />
     </Flex>
   );
 }

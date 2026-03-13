@@ -1,49 +1,45 @@
-import { 
-    Center, 
-    Flex, 
-    Image, 
-    Link, 
-    Heading,
-    Text,
-    Divider,
-    AspectRatio,
-} from "@chakra-ui/react";
-import React from "react";
+import {
+  Center,
+  Flex,
+  Image,
+  Link,
+  Heading,
+  Text,
+  AspectRatio,
+} from '@chakra-ui/react';
+import React from 'react';
 
-function ProjectCard({projectTitle, projectURL, technologiesUsed, projectDescription, projectImage}) {
-    return (
-        <Flex
-        w={["90vw", 0, 0, "60vw"]}
-        h={["30vh", null, null, "30vh"]}
-        boxShadow="2xl"
-        borderRadius="xl"
-        bgColor={"white"}
-        marginBottom={"1%"}
-        >
-            <Center w={"30%"} h={"100%"}> {/* Image box */}
-                <AspectRatio w={["90%", 0, 0, "75%"]}  ratio={[10/16, 14/10, 14/10, 18/10]} >
-                    <Image objectFit={"cover"} src={projectImage} alt={`Image of ${projectTitle}`} borderRadius={"5%"} boxShadow={"xl"}/>
-                </AspectRatio>
-                    
-            </Center> 
+function ProjectCard({ projectTitle, projectURL, technologiesUsed, projectDescription, projectImage }) {
+  return (
+    <Flex className="punk-card" w={["92vw", null, null, "52vw"]} minH={["34vh", null, null, "31vh"]} direction={["column", null, null, "row"]}>
+      <Center w={["100%", null, null, "34%"]} p={[4, null, null, 5]}>
+        <AspectRatio w="100%" maxW={["100%", null, null, "240px"]} ratio={16 / 10}>
+          <Image
+            objectFit="cover"
+            src={projectImage}
+            alt={`Image of ${projectTitle}`}
+            border="2px solid"
+            borderColor="white"
+            filter="grayscale(100%) contrast(120%)"
+          />
+        </AspectRatio>
+      </Center>
 
-            <Divider orientation="vertical" w={"3%"}/>
-        
-            <Flex flexDir={"column"} padding={["3%", null, null, "2%"]} w={"67%"} objectFit={"contain"}> {/* Text box */}
-                <Link href={projectURL} isExternal>
-                    <Heading as='h3' size={['sm', null, null, 'md']}>
-                        {projectTitle}→
-                    </Heading>
-                </Link>
-                <Text fontSize={["xs", null, null, "sm"]} marginBottom={["6%", null, null, "3%"]} fontWeight={300}>
-                    {technologiesUsed}
-                </Text>
-                <Text noOfLines={[7, null, null, 4]} fontWeight={300} fontSize={["sm", null, null, "md"]}>
-                    {projectDescription}
-                </Text>
-                
-            </Flex>
+      <Flex direction="column" p={[4, null, null, 6]} w={["100%", null, null, "66%"]} borderLeft={["none", null, null, "2px solid white"]} borderTop={["2px solid white", null, null, "none"]}>
+        <Link href={projectURL} isExternal _hover={{ textDecoration: 'none' }}>
+          <Heading as="h3" fontSize={["lg", null, null, "2xl"]} fontFamily="'Bebas Neue', sans-serif" letterSpacing="0.05em" lineHeight={1}>
+            {projectTitle} /
+          </Heading>
+        </Link>
+        <Text mt={2} mb={[4, null, null, 5]} fontSize={["xs", null, null, "sm"]} textTransform="uppercase" letterSpacing="0.12em" color="gray.300" fontFamily="'IBM Plex Mono', monospace">
+          {technologiesUsed}
+        </Text>
+        <Text fontWeight={400} fontSize={["sm", null, null, "md"]} lineHeight={1.7} color="gray.100">
+          {projectDescription}
+        </Text>
+      </Flex>
     </Flex>
-    )};
+  );
+}
 
 export default ProjectCard;
