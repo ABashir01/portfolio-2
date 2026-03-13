@@ -244,7 +244,7 @@ function HomePage() {
           <SimpleGrid columns={[1, null, null, 2]} spacing={[4, null, null, 6]} mt={6}>
             <Box w="100%">
               <Box className="ink-card zine-card-left" w="100%">
-                <Text className="card-head">Currently</Text>
+                <Text className="card-head">Working On</Text>
                 <Text className="desc light">Using LLMs to reliably extract data from semi-structured sources like recipe books and EMRs.</Text>
                 <Text className="desc light">Figuring out deterministic contracts for LLM calls so systems are dependable.</Text>
               </Box>
@@ -254,7 +254,8 @@ function HomePage() {
               <Box className="paper-card zine-card-right" w="100%">
                 <Text className="card-head dark">Other Stuff</Text>
                 <Text className="desc">
-                  Listening to:{' '}
+                  Listening to:
+                  <br />
                   <ChakraLink className="text-link dark" href="https://open.spotify.com/track/3c1HWTrM2HaPvOwIPDIa8z?si=b7e8aba4179d44c6" isExternal>
                     Tenchio
                   </ChakraLink>
@@ -266,10 +267,10 @@ function HomePage() {
                   <ChakraLink className="text-link dark" href="https://open.spotify.com/track/3iZmntAKfKaL1WLNEOFqb8?si=3b229b81c9214ff9" isExternal>
                     Ling Tosite Sigure
                   </ChakraLink>
-                  .
                 </Text>
                 <Text className="desc">
-                  Playing:{' '}
+                  Playing:
+                  <br />
                   <ChakraLink className="text-link dark" href="https://boardgamegeek.com/boardgame/291572/oath" isExternal>
                     Oath
                   </ChakraLink>
