@@ -249,7 +249,7 @@ body {
 
 .paper-card {
   background:
-    linear-gradient(180deg, var(--paper-light) 0%, var(--paper) 100%);
+    #fff;
   color: var(--ink);
   border-color: var(--line);
   box-shadow: 7px 7px 0 #000;
