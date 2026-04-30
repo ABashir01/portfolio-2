@@ -231,7 +231,7 @@ function HomePage() {
             I'M AHAD.
           </Heading>
           <Text className="hero-copy">
-            I'm interested in using my technical skills to further research and help people. I also love writing and playing music - I play guitar and bass and am always down to collaborate. In my free time, I love playing board games, reading, and have started painting.
+            I'm interested in using my technical skills to further research and help people. I'm particularly interested in tech roles in transit, health, journalism, and academia/higher education - basically any work with public impact. I also love writing and playing music - I play guitar and bass and am always down to collaborate. In my free time, I love playing board games, reading, and have started painting.
           </Text>
         </Flex>
       </Flex>
