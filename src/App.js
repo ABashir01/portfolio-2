@@ -23,6 +23,13 @@ import { Link as RouterLink, NavLink, Route, Routes } from 'react-router-dom';
 
 const projectList = [
   {
+    projectTitle: 'Muni Lost Time Atlas',
+    projectURL: 'https://github.com/ABashir01/muni-time-lost-atlas',
+    technologiesUsed: 'Python, DBT, Postgres/PostGIS, FastAPI, Next.js',
+    projectDescription:
+      "Built a public transit analytics platform for San Francisco that transforms GTFS schedules and historical stop observations into rider-facing delay rankings, route maps, and corridor-level evidence of where passengers lose the most time",
+  },
+  {
     projectTitle: 'Covid Hospitalization Predictive Model',
     projectURL: 'https://github.com/ABashir01/covid-hospitalization-predictions',
     technologiesUsed: 'R',
