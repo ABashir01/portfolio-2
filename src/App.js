@@ -169,7 +169,7 @@ const navItems = [
 
 function SiteHeader() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const logoSrc = `${process.env.PUBLIC_URL}/favicon.ico`;
+  const logoSrc = `${process.env.PUBLIC_URL}/header-logo.png`;
 
   return (
     <>
